@@ -1,0 +1,2 @@
+   ==== Result ====       
+Time taken : 15 secondsCorrect word : 3Wrong word : 0Accuracy : 86.67%Correct character : 15Wrong character : 0CPS : 1.00WPM : 12.00

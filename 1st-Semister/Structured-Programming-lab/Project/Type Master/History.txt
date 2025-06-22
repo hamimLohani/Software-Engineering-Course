@@ -1,0 +1,5 @@
+ NAME       TIME      WPM    ACCURACY
+ Hamim       30s     40.00     91.49
+ rajesh       60s     24.00     91.25
+ rahul       60s     15.00     86.93
+ h       5s     12.00     -20.00
