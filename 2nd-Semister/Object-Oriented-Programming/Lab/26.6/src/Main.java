@@ -109,11 +109,11 @@ public class Main {
         }
     }
     public static Account accountCheck(String id, ArrayList<Account> accounts) {
-        for (Account account : accounts)
-            if (account.id.equals(id))
+        for (Account account : accounts) {
+            if (account.id.equals(id)) {
                 return account;
-
-        System.out.println("Account doesn't exit.");
+            }
+        }
         return null;
     }
 }
