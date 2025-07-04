@@ -50,6 +50,8 @@ public class Main {
                     input.nextLine();
                     account = new SavingAccount(id, name, amount);
                     accounts.add(account);
+                } else {
+                    System.out.println("Change id");
                 }
             } else if (choice == 3) {
                 System.out.println("Enter Account ID: ");
@@ -63,6 +65,8 @@ public class Main {
                     input.nextLine();
                     account = new SavingAccount(id, name, amount);
                     accounts.add(account);
+                } else {
+                    System.out.println("Change id");
                 }
             } else if (choice == 4) {
                 System.out.print("Enter Account ID: ");
