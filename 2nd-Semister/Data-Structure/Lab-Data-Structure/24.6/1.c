@@ -7,25 +7,27 @@ struct node
     struct node *next;
 };
 
+void insert(struct node **head, int value) 
+{
+    struct node *newNode = malloc(sizeof(struct node));
+    newNode->data = value;
+    newNode->next = *head;
+    *head = newNode;
+}
+
 int main() 
 {
-    struct node *one = (struct node *) malloc(sizeof(struct node));
-    struct node *two = (struct node *) malloc(sizeof(struct node));
-    struct node *three = (struct node *) malloc(sizeof(struct node));
-
-    one->data = 3;
-    two->data = 4;
-    three->data = 5;
-
-    struct node *head;
-    head = one;
-    one->next = two;
-    two->next = three;
-
+    struct node *head = NULL;
+    insert(&head, 1);
+    insert(&head, 2);
+    insert(&head, 3);
+    insert(&head, 4);
     while (head)
     {
-        printf(" -> %d", head->data);
+        printf("%d -> ", head->data);
         head = head->next;
     }
-    printf("\n");
+    printf("end\n");
+    free(head);
+    return 0;
 }
