@@ -15,7 +15,8 @@ public class Main {
             System.out.println("4. Withdraw");
             System.out.println("5. Deposit");
             System.out.println("6. Transfer Money");
-            System.out.println("7. Exit");
+            System.out.println("7. Check Balance");
+            System.out.println("8. Exit");
             System.out.print("Enter your choice: ");
 
             Scanner input = new Scanner(System.in);
@@ -25,7 +26,7 @@ public class Main {
                 System.out.print("Enter Account ID: ");
                 String id = input.nextLine();
                 Account acc = accountCheck(id, accounts);
-                if (acc != null) {
+                if (acc == null) {
                     System.out.print("Enter holder Name: ");
                     String name = input.nextLine();
                     System.out.print("Enter amount to be deposited: ");
@@ -37,12 +38,14 @@ public class Main {
                     } else {
                         System.out.println("Amount to be deposited is less than 1000");
                     }
+                } else {
+                    System.out.println("Change id");
                 }
             } else if (choice == 2) {
                 System.out.print("Enter Account ID: ");
                 String id = input.nextLine();
                 Account acc = accountCheck(id, accounts);
-                if (acc != null) {
+                if (acc == null) {
                     System.out.print("Enter holder Name: ");
                     String name = input.nextLine();
                     System.out.print("Enter amount to be deposited: ");
@@ -54,10 +57,10 @@ public class Main {
                     System.out.println("Change id");
                 }
             } else if (choice == 3) {
-                System.out.println("Enter Account ID: ");
+                System.out.print("Enter Account ID: ");
                 String id = input.nextLine();
                 Account acc = accountCheck(id, accounts);
-                if (acc != null) {
+                if (acc == null) {
                     System.out.print("Enter holder Name: ");
                     String name = input.nextLine();
                     System.out.print("Enter amount to be deposited: ");
@@ -73,10 +76,10 @@ public class Main {
                 String id = input.nextLine();
                 Account acc = accountCheck(id, accounts);
                 if (acc != null) {
-                    System.out.println("Enter money to be withdrawn: ");
+                    System.out.print("Enter money to be withdrawn: ");
                     double amount = input.nextDouble();
                     input.nextLine();
-                    acc.withdraw(amount, 0);
+                    System.out.println("Remain: " + acc.withdraw(amount, 0));
                 } else {
                     System.out.println("Account not found");
                 }
@@ -85,10 +88,10 @@ public class Main {
                 String id = input.nextLine();
                 Account acc = accountCheck(id, accounts);
                 if (acc != null) {
-                    System.out.println("Enter money to be deposited: ");
+                    System.out.print("Enter money to be deposited: ");
                     double amount = input.nextDouble();
                     input.nextLine();
-                    acc.deposit(amount, 0);
+                    System.out.println("Remain: " + acc.deposit(amount, 0));
                 } else {
                     System.out.println("Account not found");
                 }
@@ -97,19 +100,28 @@ public class Main {
                 String id = input.nextLine();
                 Account acc = accountCheck(id, accounts);
                 if (acc != null) {
-                    System.out.println("Enter Account to deposited: ");
+                    System.out.print("Enter Account to deposited: ");
                     String toId = input.nextLine();
                     Account toAcc = accountCheck(toId, accounts);
-                    System.out.println("Enter money to be deposited: ");
+                    System.out.print("Enter money to be deposited: ");
                     double amount = input.nextDouble();
                     input.nextLine();
-                    acc.transferTo(amount, 0, toId, accounts);
+                    System.out.println("Remain: " + acc.transferTo(amount, 0, toId, accounts));
 
                 }
             } else if (choice == 7) {
+                System.out.print("Enter Account ID: ");
+                String id = input.nextLine();
+                Account acc = accountCheck(id, accounts);
+                if (acc != null) {
+                    System.out.println("Balance: " + acc.getBalance());
+                } else  {
+                    System.out.println("Account not found");
+                }
+            } else if (choice == 8) {
                 input.close();
                 System.exit(1);
-            }
+            } else continue;
         }
     }
     public static Account accountCheck(String id, ArrayList<Account> accounts) {

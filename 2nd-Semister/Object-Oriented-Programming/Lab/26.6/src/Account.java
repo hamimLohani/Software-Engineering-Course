@@ -15,6 +15,11 @@ public abstract class Account
         this.accountType = accountType;
     }
 
+    public double getBalance()
+    {
+        return balance;
+    }
+
     public double deposit(double amount, double interest)
     {
         if (balance >= 0)

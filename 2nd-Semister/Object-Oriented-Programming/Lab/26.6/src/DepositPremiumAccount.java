@@ -41,6 +41,6 @@ public class DepositPremiumAccount extends Account {
     public double transferTo(double amount, double minimumBalance, String id,  ArrayList<Account> accounts)
     {
         System.out.println("You can not transfer money");
-        return 0;
+        return super.getBalance();
     }
 }
