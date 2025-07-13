@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Frame extends JFrame {
 
@@ -120,8 +122,8 @@ public class Frame extends JFrame {
         positionLabel.setBounds(30,270,100,30);
         frame.add(positionLabel);
 
-        String[] position = {"Select", "Defensive midfielder", "Goalkeeper", "Centre-back", "Central midfielder", "Fullback", "Full back", "Attacking midfielder", "Striker", "Center forwards"};
-        JComboBox<String> positionBox = new JComboBox<>(position);
+        String[] positions = {"Select", "Defensive midfielder", "Goalkeeper", "Centre-back", "Central midfielder", "Fullback", "Full back", "Attacking midfielder", "Striker", "Center forwards"};
+        JComboBox<String> positionBox = new JComboBox<>(positions);
         positionBox.setBounds(110,270,250,30);
         frame.add(positionBox);
 
@@ -139,8 +141,45 @@ public class Frame extends JFrame {
         frame.add(saveButton);
         saveButton.addActionListener(e ->{
 
+            String name = nameField.getText();
+            String email = emailField.getText();
+            String phone = phoneField.getText();
+            String address = addressField.getText();
+            String gender = maleRadioButton.isSelected() ? "Male" : (femaleRadioButton.isSelected() ? "Female" : "Not selected");
+            String dob = dayBox.getSelectedItem() + "-" + monthBox.getSelectedItem() + "-" + yearBox.getSelectedItem();
+            String degree = (String) degreeBox.getSelectedItem();
+            String position = (String) positionBox.getSelectedItem();
+            String experience = experienceField.getText();
+            String photo = filePath[0].isEmpty() ? "Not selected" : filePath[0];
 
+            if (experience.equals("") || position.equals("Select") || degree.equals("") || gender.equals("Not selected") || address.equals("") || phone.equals("") || email.equals("") || name.equals("")) {
+                JOptionPane.showMessageDialog(null, "Please fill all the fields", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    FileWriter fileWriter = new FileWriter("data.txt", true);
+                    fileWriter.write("Name: " + name);
+                    fileWriter.write("\nEmail: " + email);
+                    fileWriter.write("\nPhone: " + phone);
+                    fileWriter.write("\nAddress: " + address);
+                    fileWriter.write("\nGender: " + gender);
+                    fileWriter.write("\nDob: " + dob);
+                    fileWriter.write("\nDegree: " + degree);
+                    fileWriter.write("\nPosition: " + position);
+                    fileWriter.write("\nExperience: " + experience);
+                    fileWriter.write("\nPhoto: " + photo);
+                    fileWriter.write("\n-----------------------------------\n\n");
+                    fileWriter.close();
 
+                    JOptionPane.showMessageDialog(frame, "Successfully saved\n" +
+                            "Name: " + name + "\nEmail: " + email + "\nPhone: " + phone + "\nAddress: " + address
+                            + "\nGender: " + gender + "\nDate of Birth: " + dob + "\nDegree: " + degree + "\nPosition: " + position
+                            , "Success", JOptionPane.INFORMATION_MESSAGE);
+                    clearForm(nameField, emailField, phoneField, addressField, experienceField, positionBox, buttonGroup, dayBox, monthBox, yearBox, degreeBox, filePathLabel);
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(frame, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace();
+                }
+            }
         });
 
         JButton resetButton = new JButton("Reset");
@@ -148,21 +187,26 @@ public class Frame extends JFrame {
         resetButton.setFocusable(false);
         frame.add(resetButton);
         resetButton.addActionListener(e ->{
-           nameField.setText("");
-           emailField.setText("");
-           phoneField.setText("");
-           addressField.setText("");
-           experienceField.setText("");
-           positionBox.setSelectedIndex(0);
-           buttonGroup.clearSelection();
-           dayBox.setSelectedIndex(0);
-           monthBox.setSelectedIndex(0);
-           yearBox.setSelectedIndex(0);
-           filePathLabel.setText("");
+           clearForm(nameField, emailField, phoneField, addressField, experienceField, positionBox, buttonGroup, dayBox, monthBox, yearBox, degreeBox, filePathLabel);
         });
 
-
-
         frame.setVisible(true);
+    }
+
+    public void clearForm(JTextField nameField, JTextField emailField, JTextField phoneField, JTextField addressField, JTextField experienceField,
+                          JComboBox<String> positionBox, ButtonGroup buttonGroup, JComboBox<String> dayBox, JComboBox<String> monthBox, JComboBox<String> yearBox,
+                          JComboBox<String> degreeBox, JLabel filePathLabel) {
+        nameField.setText("");
+        emailField.setText("");
+        phoneField.setText("");
+        addressField.setText("");
+        experienceField.setText("");
+        positionBox.setSelectedIndex(0);
+        buttonGroup.clearSelection();
+        dayBox.setSelectedIndex(0);
+        monthBox.setSelectedIndex(0);
+        yearBox.setSelectedIndex(0);
+        degreeBox.setSelectedIndex(0);
+        filePathLabel.setText("");
     }
 }
