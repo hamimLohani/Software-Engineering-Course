@@ -11,10 +11,7 @@ public abstract class Emplyee
         this.securityNumber = securityNumber;
     }
     public abstract double earning();
-    public String getFirstName()
-    {
-        return firstame;
-    }
+
     public String toString()
     {
         return "First Name: " + firstame + "Last Name: " + lastName + "Security Number: " + securityNumber;
