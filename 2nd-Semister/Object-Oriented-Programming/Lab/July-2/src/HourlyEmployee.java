@@ -19,7 +19,7 @@ public class HourlyEmployee extends Emplyee
         if (hour <= 40) {
             return (wage * hour);
         } else {
-            return (wage * hour * 1.5);
+            return (wage * hour) + ((wage - 40) * hour * 1.5);
         }
     }
     @Override
