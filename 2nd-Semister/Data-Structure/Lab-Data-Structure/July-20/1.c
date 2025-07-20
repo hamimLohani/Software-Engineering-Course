@@ -1,25 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct TreeNode
+typedef struct Node
 {
     int key;
-    struct TreeNode *left, *right, *parent;
-} TreeNode;
+    struct Node *left, *right, *parent;
+} Node;
 
-TreeNode *createNode(int key)
+Node *createNode(int key)
 {
-    TreeNode *node = (TreeNode *)malloc(sizeof(TreeNode));
+    Node *node = (Node *)malloc(sizeof(Node));
     node->key = key;
     node->left = node->right = node->parent = NULL;
     return node;
 }
 
-void treeInsert(TreeNode **root, int key)
+void treeInsert(Node **root, int key)
 {
-    TreeNode *z = createNode(key);
-    TreeNode *y = NULL;
-    TreeNode *x = *root;
+    Node *z = createNode(key);
+    Node *y = NULL;
+    Node *x = *root;
 
     while (x != NULL)
     {
@@ -39,61 +39,68 @@ void treeInsert(TreeNode **root, int key)
         y->right = z;
 }
 
-TreeNode *treeMinimum(TreeNode *x)
+Node *Minimum(Node *x)
 {
     while (x->left != NULL)
         x = x->left;
     return x;
 }
 
-TreeNode *treeSuccessor(TreeNode *x)
+void treeDelete(Node **root, Node *z)
 {
-    if (x->right != NULL)
-        return treeMinimum(x->right);
-    TreeNode *y = x->parent;
-    while (y != NULL && x == y->right)
+    
+    if (z->left == NULL && z->right == NULL)
     {
-        x = y;
-        y = y->parent;
+        if (z->parent == NULL) 
+            *root = NULL;
+        else if (z == z->parent->left)
+            z->parent->left = NULL;
+        else
+            z->parent->right = NULL;
+        free(z);
     }
-    return y;
-}
+    
+    else if (z->left == NULL)
+    {
+        if (z->parent == NULL) 
+            *root = z->right;
+        else if (z == z->parent->left)
+            z->parent->left = z->right;
+        else
+            z->parent->right = z->right;
 
-void transplant(TreeNode **root, TreeNode *u, TreeNode *v)
-{
-    if (u->parent == NULL)
-        *root = v;
-    else if (u == u->parent->left)
-        u->parent->left = v;
-    else
-        u->parent->right = v;
-    if (v != NULL)
-        v->parent = u->parent;
-}
-
-void treeDelete(TreeNode **root, TreeNode *z)
-{
-    if (z->left == NULL)
-        transplant(root, z, z->right);
+        if (z->right != NULL)
+            z->right->parent = z->parent;
+        free(z);
+    }
+    
     else if (z->right == NULL)
-        transplant(root, z, z->left);
+    {
+        if (z->parent == NULL) 
+            *root = z->left;
+        else if (z == z->parent->left)
+            z->parent->left = z->left;
+        else
+            z->parent->right = z->left;
+
+        if (z->left != NULL)
+            z->left->parent = z->parent;
+        free(z);
+    }
+    
     else
     {
-        TreeNode *y = treeMinimum(z->right);
-        if (y->parent != z)
-        {
-            transplant(root, y, y->right);
-            y->right = z->right;
-            y->right->parent = y;
-        }
-        transplant(root, z, y);
-        y->left = z->left;
-        y->left->parent = y;
+        Node *successor = Minimum(z->right);
+
+        int temp = z->key;
+        z->key = successor->key;
+        successor->key = temp;
+        
+        treeDelete(root, successor);
     }
-    free(z);
 }
 
-void inorder(TreeNode *root)
+void inorder(Node *root)
 {
     if (root != NULL)
     {
@@ -103,7 +110,7 @@ void inorder(TreeNode *root)
     }
 }
 
-TreeNode *treeSearch(TreeNode *root, int key)
+Node *treeSearch(Node *root, int key)
 {
     if (root == NULL || key == root->key)
         return root;
@@ -115,27 +122,26 @@ TreeNode *treeSearch(TreeNode *root, int key)
 
 int main()
 {
-    TreeNode *root = NULL;
+    Node *root = NULL;
 
-    
-    treeInsert(&root, 15);
+    treeInsert(&root, 8);
     treeInsert(&root, 6);
     treeInsert(&root, 18);
     treeInsert(&root, 3);
     treeInsert(&root, 7);
-    treeInsert(&root, 17);
-    treeInsert(&root, 20);
+    treeInsert(&root, 10);
+    treeInsert(&root, 22);
 
     printf("Inorder before deletion: ");
     inorder(root);
     printf("\n");
 
-    
-    TreeNode *node = treeSearch(root, 6);
+    int keyToDelete = 18;
+    Node *node = treeSearch(root, keyToDelete);
     if (node != NULL)
         treeDelete(&root, node);
 
-    printf("Inorder after deleting 6: ");
+    printf("Inorder after deleting %d: ", keyToDelete);
     inorder(root);
     printf("\n");
 
