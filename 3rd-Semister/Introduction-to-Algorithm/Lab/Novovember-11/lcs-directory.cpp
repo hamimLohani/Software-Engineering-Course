@@ -34,31 +34,34 @@ void lcs_dp(const string &a, const string &b) {
         } else if (dp[i + 1][j] > dp[i][j + 1]) i++;
         else j++;
     }
-    cout << "\nLength: " << dp[0][0] << endl;
+    cout << "Length: " << dp[0][0] << endl;
     cout <<  "LCS: " << lcs << endl;
 
     int max_len = max(n, m);
-    cout << "Percentage: " << (double)dp[0][0] / max_len * 100 << "%" << endl;
+    cout << "Percentage: " << (double)dp[0][0] / max_len * 100 << "%" << "\n\n";
 }
 
 
 int main() {
-    ifstream file1("input1.txt");
-    ifstream file2("input2.txt");
-    
-    stringstream s1, s2;
-    s1 << file1.rdbuf();
-    s2 << file2.rdbuf();
-    
-    string contents1 = s1.str();
-    string contents2 = s2.str();
-    
-    file1.close();
-    file2.close();
 
-    lcs_dp("contents1keuwhdfu8woeijdowe8yf7gwof93 yfguyv", contents1);
+    DIR *dir = opendir(".");
+    struct dirent *entry;
+    string filename = "";
     
-    lcs_dp("contents1keuwhdfu8woeijdowe8yf7gwof93 yfguyv", contents2);
-    
+    while ((entry = readdir(dir)) != NULL) {
+        if (entry->d_type == DT_REG) {
+            cout << "File: " << entry->d_name << endl;
+            filename = (string) entry->d_name;
+            ifstream file(filename);
+            stringstream s;
+            s << file.rdbuf();
+            string content = s.str();
+            file.close();
+            lcs_dp("Wise busy past both park when an ye no", content);
+
+        }
+    }
+    closedir(dir);
+
     return 0;
 }
