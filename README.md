@@ -20,6 +20,14 @@ Software-Engineering-Course/
 │   ├── Probability-And-Statistics-for-Engineers-2/
 │   └── Questions/
 ├── 3rd-Semister/
+│   ├── Data-Structure-Advanced/
+│   ├── Algorithms/
+│   ├── Operating-Systems/
+│   ├── Database-Management-Systems/
+│   ├── Computer-Networks/
+│   ├── Software-Design-and-Architecture/
+│   ├── Numerical-Methods/
+│   └── Software-Engineering-Lab/
 └── README.md
 ```
 
