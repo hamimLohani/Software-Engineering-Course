@@ -1,4 +1,5 @@
 # Software-Engineering-Course
+
 ```
 Software-Engineering-Course/
 ├── 1st-Semister/
@@ -18,5 +19,8 @@ Software-Engineering-Course/
 │   ├── Object-Oriented-Programming/
 │   ├── Probability-And-Statistics-for-Engineers-2/
 │   └── Questions/
-├── README.md
+├── 3rd-Semister/
+└── README.md
 ```
+
+This README lists the course folders in the repository. Add materials under the new 3rd-Semister directory as you create them.
