@@ -2,7 +2,7 @@
 
 ```
 Software-Engineering-Course/
-├── 1st-Semister/
+├── 1st-Semester/
 │   ├── Calculus-1/
 │   ├── Discrete-Mathematics/
 │   ├── Introduction-to-Sociology/
@@ -11,23 +11,23 @@ Software-Engineering-Course/
 │   ├── Question/
 │   ├── Structured-Programming/
 │   └── Structured-Programming-lab/
-├── 2nd-Semister/
-│   ├── Bangladesh-Stadies/
+├── 2nd-Semester/
+│   ├── Bangladesh-Studies/
 │   ├── Calculus-2/
 │   ├── Computer-Organization/
 │   ├── Data-Structure/
 │   ├── Object-Oriented-Programming/
 │   ├── Probability-And-Statistics-for-Engineers-2/
 │   └── Questions/
-├── 3rd-Semister/
-│   ├── Data-Structure-Advanced/
-│   ├── Algorithms/
-│   ├── Operating-Systems/
-│   ├── Database-Management-Systems/
+├── 3rd-Semester/
+│   ├── Theory-of-Computing/
+│   ├── Introduction-to-Algorithm/
+│   ├── Introduction-to-Algorithm-Lab/
+│   ├── Linear-Algebra/
+│   ├── Business-Communication/
 │   ├── Computer-Networks/
-│   ├── Software-Design-and-Architecture/
-│   ├── Numerical-Methods/
-│   └── Software-Engineering-Lab/
+│   ├── Computer-Networks-Lab/
+│   └── Software-Project-Lab-1/
 └── README.md
 ```
 
