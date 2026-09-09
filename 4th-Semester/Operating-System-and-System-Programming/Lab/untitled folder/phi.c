@@ -11,7 +11,7 @@ int main() {
         int philosopher;
         scanf("%d", &philosopher);
 
-        if (philosopher < 0 || philosopher >= N) {
+        if (philosopher < 0 || philosopher >= M) {
             printf("Philosopher %d is INVALID (Out of Range).\n", philosopher);
             continue;
         }
