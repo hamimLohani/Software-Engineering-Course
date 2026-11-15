@@ -1,0 +1,105 @@
+================================================================================
+AI Prompting and Iteration Log (prompts_1639.txt)
+Assignment: Pure HTML Personal Portfolio (AI-Assisted Development)
+Course: Web Technology Lab
+Student: Md. Inzamamul Lohani (Hamim)
+Student ID: 1639 (BSSE1639)
+================================================================================
+
+--------------------------------------------------------------------------------
+Iteration 1: Initial Prompt & Markup Generation
+--------------------------------------------------------------------------------
+[Prompt to AI]:
+"I need to create a complete curriculum vitae / personal portfolio webpage in HTML based on my course assignment specifications. The resume should include a Header with Name, Address, Email, Phone, and a top-right profile picture, followed by Career Objective, Present Status, Education table, Computer Skills table, Professional Experience (ordered list), Projects & Academic Projects (unordered lists), Achievements, Languages, Personal Information table with 11 fields, Hobbies, Games, References, and a centered Copyright footer."
+
+[Audit & Identified Issues]:
+- The AI produced an HTML document, but it automatically included modern CSS: `style="display: flex; justify-content: space-between;"` in the header, `style="border-collapse: collapse;"` on tables, and `<div style="...">` for layout blocks.
+- Constraint Violation: The assignment strictly forbids any CSS (<style>, style="...", or external stylesheets) and JavaScript.
+
+--------------------------------------------------------------------------------
+Iteration 2: Strict CSS Stripping & Legacy HTML Layout Enforcement
+--------------------------------------------------------------------------------
+[Prompt to AI]:
+"Strictly enforce the assignment constraint: NO CSS (<style> tags or inline style="..." attributes) and NO JavaScript (<script>). Strip out all CSS properties like 'display:flex', 'text-align', 'border-collapse', and 'margin'. Use 100% pure HTML. For layout and spacing, use native structural tags and legacy HTML attributes only: <table border="0" cellpadding="..." cellspacing="..." width="...">, <tr>, <td> with align="..." and valign="...", <hr> dividers, <br>, <b>, <u>, and <h1>-<h3> headings."
+
+[Audit & Identified Issues]:
+- All inline styles and CSS were removed.
+- Header layout was successfully restructured into an invisible table (`border="0"`) with `valign="top"` and `align="right"` for the profile image.
+- However, in the Personal Information section, the text colons (:) were not neatly aligned vertically because it was rendered as plain text lines with colons.
+
+--------------------------------------------------------------------------------
+Iteration 3: Aligning Personal Information & Computer Skills with Hidden Tables
+--------------------------------------------------------------------------------
+[Prompt to AI]:
+"The Personal Information section requires an invisible/hidden HTML table (border="0") with 3 columns:
+ Column 1: Field label (in bold, e.g., Full Name)
+ Column 2: Colon ':' (centered, fixed width)
+ Column 3: Field value
+Ensure all 11 required fields are present: Full Name, Father's Name, Mother's Name, Date of Birth, Sex, Marital Status, Nationality, Religion, Blood Group, Present Address, and Permanent Address.
+Apply a similar 3-column hidden table structure to Computer Skills to keep category colons cleanly aligned without CSS."
+
+[Audit & Identified Issues]:
+- The hidden tables aligned all labels and colons perfectly.
+- In Projects and Academic Projects, nested unordered lists were structured so outer bullets are bold titles and inner bullets contain descriptions.
+
+--------------------------------------------------------------------------------
+Iteration 4: Personalization with Student's Real CV Data (from ~/Documents/cv)
+--------------------------------------------------------------------------------
+[Prompt to AI]:
+"Check ~/Document/cv for more information and integrate my actual resume details:
+- Full Name: Md. Inzamamul Lohani (Hamim)
+- Affiliation: Institute of Information Technology (IIT), University of Dhaka (BSSE, Roll: BSSE1639)
+- Email: bsse1639@iit.du.ac.bd | Phone: +880 1572906733
+- Real Education: BSSE at IIT DU (CGPA 3.62 / 4.00), HSC at St. Joseph Higher Secondary School (GPA 5.00), SSC at Cantonment Public School & College, BUSMS (GPA 5.00).
+- Actual Featured Projects: Smart Multi-Plug System (ESP8266 + React/Vite), MealChart (Next.js + Firestore), Sweep (native Swift macOS CLI distributed via Homebrew).
+- Actual Academic Projects: Column Generation Algorithm (SPL-1, Java + CPLEX), AgroSense (JavaFX + ESP8266 + GoF patterns), Student Aid (Next.js + TypeScript).
+- Actual Referees: Prof. Shah Mostafa Khaled, Ph.D. and Mridha Md. Nafis Fuad (IIT, University of Dhaka).
+- Extracurriculars: Marathon runner, IIT Futsal champion goalkeeper, 500+ competitive programming problems solved."
+
+[Audit & Identified Issues]:
+- Accurate data populated from real CV.
+- Need direct GitHub hyperlinks for every single project so reviewers and evaluators can inspect repositories directly.
+
+--------------------------------------------------------------------------------
+Iteration 5: Integrating GitHub Repository Links for All Projects
+--------------------------------------------------------------------------------
+[Prompt to AI]:
+"Add all projects with their respective GitHub repository links in both Projects and Academic Projects sections."
+
+[Outcome & Final Verification]:
+- All 7 featured open-source and academic projects (Smart Multi-Plug System, MealChart, Sweep, System Suite, Column Generation Algorithm, AgroSense, Student Aid) hyperlinked with pure HTML <a href="..."> tags on both titles and description references.
+- Zero occurrences of CSS or JS.
+- Strict adherence to 100% pure HTML constraint and assignment specifications.
+- Clean packaging in submission archive.
+
+--------------------------------------------------------------------------------
+Iteration 6: Project Substitution (ESP32_SmartBus_Complete)
+--------------------------------------------------------------------------------
+[Prompt to AI]:
+"Add esp_bus_complete project instead of student-aid with git link."
+
+[Audit & Identified Issues]:
+- Located repository https://github.com/hamimLohani/ESP32_SmartBus_Complete.
+- Replaced Student Aid with ESP32 Smart Bus System (Complete IoT Solution).
+- Formatted with bold title, nested description detailing RFID/NFC ticketing, distance fare calculation, ultrasonic collision sensing, dual IR passenger counting, and onboard web dashboard, hyperlinked to the GitHub repository.
+
+[Outcome & Final Verification]:
+- Zero occurrences of CSS (<style>, style=) and JavaScript (<script>).
+- Updated submission zip archive (1639.zip).
+
+--------------------------------------------------------------------------------
+Iteration 7: Adding Left & Right Margins/Padding Without CSS
+--------------------------------------------------------------------------------
+[Prompt to AI]:
+"Add padding on the left and right sides so the page is not flush against the browser window edge and looks balanced."
+
+[Audit & Identified Issues]:
+- Constraint: Modern CSS (margin: 0 auto, padding: 0 40px) is strictly prohibited.
+- Solution: Used classic pure HTML structural attributes:
+  1. Configured legacy body margin attributes: <body leftmargin="50" rightmargin="50" topmargin="30" bottommargin="30" marginwidth="50" marginheight="30">.
+  2. Wrapped page contents inside an outer centered table container: <table width="85%" align="center" border="0" cellpadding="10" cellspacing="0">.
+- This creates clean, professional margins framing the resume across desktop, laptop, and mobile screens while retaining 100% pure HTML compliance.
+
+[Outcome & Final Verification]:
+- Zero occurrences of CSS (<style>, style=) and JavaScript (<script>).
+- Updated submission zip archive (1639.zip).
