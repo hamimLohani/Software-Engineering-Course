@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Management Dashboard</title>
+  <!-- Google Fonts & Phosphor Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-icon">🎓</div>
+      <div>
+        <h1>Student Management Dashboard</h1>
+        <p class="subtitle">Manage enrollment, edit details, and track student records in real time</p>
+      </div>
+    </header>
+
+    <!-- FORM SECTION -->
+    <div class="card form-card">
+      <div class="card-header">
+        <h2 id="form-title">
+          <span class="icon">➕</span> Add New Student
+        </h2>
+        <span class="badge-hint" id="mode-badge">POST Mode</span>
+      </div>
+
+      <form id="student-form">
+        <input type="hidden" id="student-id">
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required placeholder="e.g. John Doe">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required placeholder="e.g. john@university.edu">
+          </div>
+
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" required min="16" max="100" placeholder="e.g. 21">
+          </div>
+
+          <div class="form-group">
+            <label for="department">Department</label>
+            <div class="select-wrapper">
+              <select id="department">
+                <option value="Computer Science">Computer Science</option>
+                <option value="Electrical Engineering">Electrical Engineering</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Business Administration">Business Administration</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="status">Status</label>
+            <div class="select-wrapper">
+              <select id="status">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="save-btn" class="btn btn-primary">
+            <span>💾</span> Save Student
+          </button>
+          <button type="button" id="cancel-btn" class="btn btn-secondary" style="display:none;">
+            ✕ Cancel Edit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- CONTROLS: FILTER & SORT -->
+    <div class="card controls-card">
+      <div class="controls-header">
+        <h3>🔍 Search & Filter Tools</h3>
+      </div>
+      <div class="controls-grid">
+        <div class="control-item">
+          <label for="filter-dept">Department</label>
+          <div class="select-wrapper">
+            <select id="filter-dept">
+              <option value="">All Departments</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Electrical Engineering">Electrical Engineering</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Business Administration">Business Administration</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-item">
+          <label for="filter-status">Status</label>
+          <div class="select-wrapper">
+            <select id="filter-status">
+              <option value="">All Statuses</option>
+              <option value="Active">Active Only</option>
+              <option value="Inactive">Inactive Only</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-item">
+          <label for="sort-field">Sort By</label>
+          <div class="select-wrapper">
+            <select id="sort-field">
+              <option value="id">ID</option>
+              <option value="name">Name</option>
+              <option value="age">Age</option>
+              <option value="department">Department</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-item">
+          <label for="sort-order">Order</label>
+          <div class="select-wrapper">
+            <select id="sort-order">
+              <option value="asc">Ascending (↑ A-Z)</option>
+              <option value="desc">Descending (↓ Z-A)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLE SECTION -->
+    <div class="card table-card">
+      <div class="card-header">
+        <h2>📋 Student Directory</h2>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 70px;">ID</th>
+              <th>Student Name</th>
+              <th>Email</th>
+              <th style="width: 80px;">Age</th>
+              <th>Department</th>
+              <th style="width: 110px;">Status</th>
+              <th style="width: 250px; text-align: right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="student-table-body">
+            <!-- Rows injected by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PAGINATION SECTION -->
+      <div class="pagination">
+        <button id="prev-btn" class="btn btn-outline" disabled>← Previous</button>
+        <span id="page-info" class="page-pill">Page 1</span>
+        <button id="next-btn" class="btn btn-outline">Next →</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

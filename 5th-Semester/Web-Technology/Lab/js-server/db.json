@@ -1,0 +1,60 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "name": "Rahim Ahmed",
+      "email": "rahim@example.com",
+      "age": 20,
+      "department": "Computer Science",
+      "status": "Active"
+    },
+    {
+      "id": "2",
+      "name": "Fatima Noor",
+      "email": "fatima@example.com",
+      "age": 22,
+      "department": "Electrical Engineering",
+      "status": "Active"
+    },
+    {
+      "id": "3",
+      "name": "Karim Hasan",
+      "email": "karim@example.com",
+      "age": 21,
+      "department": "Mechanical Engineering",
+      "status": "Inactive"
+    },
+    {
+      "id": "4",
+      "name": "Ayesha Siddiqua",
+      "email": "ayesha@example.com",
+      "age": 19,
+      "department": "Computer Science",
+      "status": "Active"
+    },
+    {
+      "id": "5",
+      "name": "Tanvir Hossain",
+      "email": "tanvir@example.com",
+      "age": 23,
+      "department": "Business Administration",
+      "status": "Active"
+    },
+    {
+      "id": "6",
+      "name": "Sadia Islam",
+      "email": "sadia@example.com",
+      "age": 21,
+      "department": "Electrical Engineering",
+      "status": "Inactive"
+    },
+    {
+      "id": "7",
+      "name": "Mahmudul Hasan",
+      "email": "mahmud@example.com",
+      "age": 24,
+      "department": "Computer Science",
+      "status": "Active"
+    }
+  ]
+}
